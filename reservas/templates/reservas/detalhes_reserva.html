@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Reserva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Detalhes da Reserva</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sala: {{ reserva.sala.nome }}</h5>
+                <p class="card-text">Horário de Início: {{ reserva.horario_inicio }}</p>
+                <p class="card-text">Horário de Término: {{ reserva.horario_fim }}</p>
+                <p class="card-text">Status: 
+                    {% if reserva.status_reserva == 'P' %}
+                        <span class="badge bg-warning">Pendente</span>
+                    {% elif reserva.status_reserva == 'C' %}
+                        <span class="badge bg-success">Confirmada</span>
+                    {% else %}
+                        <span class="badge bg-danger">Cancelada</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'listar_salas' %}" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
